@@ -1,4 +1,4 @@
-module github.com/jacob0521/gopay
+module github.com/go-pay/gopay
 
 go 1.21
 
