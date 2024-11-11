@@ -1,8 +1,6 @@
 package alipay
 
 const (
-	// URL
-	baseUrl = "https://openapi.alipay.com/gateway.do"
 	//sandboxBaseUrl     = "https://openapi.alipaydev.com/gateway.do"
 	sandboxBaseUrl = "https://openapi-sandbox.dl.alipaydev.com/gateway.do"
 	baseUrlUtf8    = "https://openapi.alipay.com/gateway.do?charset=utf-8"
@@ -16,6 +14,15 @@ const (
 	RSA2                      = "RSA2"
 	UTF8                      = "utf-8"
 )
+
+var (
+	// URL
+	baseUrl = "https://openapi.alipay.com/gateway.do"
+)
+
+func SetBaseUrl(url string) {
+	baseUrl = url
+}
 
 var (
 	//不需要处理AppAuthToken的方法
