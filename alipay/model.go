@@ -24,6 +24,10 @@ func SetBaseUrl(url string) {
 	baseUrl = url
 }
 
+func SetAlipayHost(host string) {
+	baseUrl = "https://" + host + "/gateway.do"
+}
+
 var (
 	//不需要处理AppAuthToken的方法
 	appAuthTokenInBizContent = map[string]bool{
