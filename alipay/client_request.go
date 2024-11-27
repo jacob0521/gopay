@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/go-pay/gopay"
@@ -173,6 +174,12 @@ func (a *Client) doAliPay(ctx context.Context, bm gopay.BodyMap, method string, 
 		url = baseUrlUtf8
 		if !a.IsProd {
 			url = sandboxBaseUrlUtf8
+		}
+		if bm != nil {
+			proxyHost := bm.GetString("proxy_host")
+			if proxyHost != "" {
+				url = strings.Replace(url, "openapi.alipay.com", proxyHost, 1)
+			}
 		}
 		res, bs, err := a.hc.Req(xhttp.TypeFormData).Post(url).SendString(param).EndBytes(ctx)
 		if err != nil {
